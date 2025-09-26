@@ -1,15 +1,17 @@
 import { Routes } from '@angular/router';
 import { authGuard, roleGuard } from './infrastructure/security/guards/auth.guard';
+import { loginGuard } from './infrastructure/security/guards/login.guard';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth/login' },
 
-  { 
+  {
     path: 'auth/login',
     loadComponent: () => import('./infrastructure/modules/auth/pages/login/login.component')
-      .then(m => m.LoginComponent)
+      .then(m => m.LoginComponent),
+    canActivate: [loginGuard] 
   },
-  { 
+  {
     path: 'auth/forgot',
     loadComponent: () => import('./infrastructure/modules/auth/pages/forgot/forgot.component')
       .then(m => m.ForgotComponent)
@@ -37,21 +39,21 @@ export const routes: Routes = [
         data: { roles: ['JUEZ', 'ADMIN'] }
       },
 
-    
+
       {
         path: 'mant-user',
         loadComponent: () => import('./infrastructure/modules/mant.user/mant.user.component')
           .then(m => m.MantUserComponent),
         children: [
-          { 
-            path: 'edit-profile', 
+          {
+            path: 'edit-profile',
             loadComponent: () => import('./infrastructure/modules/edit-profile/edit-profile.component')
-              .then(m => m.EditProfileComponent) 
+              .then(m => m.EditProfileComponent)
           },
-          { 
-            path: 'change-password', 
+          {
+            path: 'change-password',
             loadComponent: () => import('./infrastructure/modules/change-password/change-password.component')
-              .then(m => m.ChangePasswordComponent) 
+              .then(m => m.ChangePasswordComponent)
           },
           { path: '', redirectTo: 'edit-profile', pathMatch: 'full' }
         ]
