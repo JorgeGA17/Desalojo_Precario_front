@@ -1,0 +1,73 @@
+<header class="topbar" role="banner">
+  <div class="brand">
+    <strong>Sistema: Módulo CIVIL - Desalojo Precario</strong>
+  </div>
+  <div class="actions">
+    <button class="btn danger" (click)="logout()" title="Salir">Salir ✦</button>
+  </div>
+</header>
+<div class="shell">
+  <aside class="sidebar" role="navigation" aria-label="Menú principal">
+    <div class="side-content">
+      <div class="side-header">
+        <div class="avatar">
+          <img [src]="avatarUrl() || 'assets/img/person.png'" alt="Foto de perfil" loading="lazy"
+            (error)="onAvatarError()" />
+        </div>
+
+        <div class="user">
+          <div class="name">{{ username() }}</div>
+          <div class="role">{{ rol() }}</div>
+
+          <button class="btn-edit" (click)="goToMantUser()">
+            <i class="pi pi-user-edit"></i> Editar
+          </button>
+
+        </div>
+      </div>
+
+      <div class="search">
+        <i class="pi pi-search" aria-hidden="true"></i>
+        <input type="search" [formControl]="search" placeholder="Buscar..." aria-label="Buscar en el menú">
+      </div>
+
+      <nav class="menu" role="tree">
+        <ng-container *ngFor="let m of menu()">
+          <div *ngIf="m.children?.length" class="node" role="treeitem" [attr.aria-expanded]="expanded().has(m.id)">
+            <button type="button" class="item parent" (click)="toggle(m.id)">
+              <i *ngIf="m.icon" [class]="m.icon + ' icon'"></i>
+              <span class="label">{{ m.label }}</span>
+              <span class="spacer"></span>
+              <span class="caret" [class.up]="expanded().has(m.id)">▾</span>
+              <span *ngIf="m.badge" class="badge">{{ m.badge }}</span>
+            </button>
+            <div class="children" [class.open]="expanded().has(m.id)">
+              <a *ngFor="let c of m.children" class="item child" [routerLink]="c.route" routerLinkActive="active"
+                role="treeitem">
+                <i *ngIf="c.icon" [class]="c.icon + ' icon'"></i>
+                <span class="label">{{ c.label }}</span>
+                <span class="spacer"></span>
+                <span *ngIf="c.badge" class="badge" [class.isNew]="c.badge === 'NEW'">{{ c.badge }}</span>
+              </a>
+            </div>
+          </div>
+          <a *ngIf="!m.children?.length" class="item leaf" [routerLink]="m.route" routerLinkActive="active"
+            role="treeitem">
+            <i *ngIf="m.icon" [class]="m.icon + ' icon'"></i>
+            <span class="label">{{ m.label }}</span>
+            <span class="spacer"></span>
+            <span *ngIf="m.badge" class="badge" [class.isNew]="m.badge === 'NEW'">{{ m.badge }}</span>
+          </a>
+        </ng-container>
+      </nav>
+    </div>
+
+    <footer class="side-footer" role="contentinfo" aria-label="Identidad institucional">
+      <img src="assets/img/pj-logo-footer.png" alt="Poder Judicial del Perú">
+    </footer>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

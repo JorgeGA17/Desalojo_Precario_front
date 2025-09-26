@@ -1,0 +1,25 @@
+<h3>Editar Perfil</h3>
+
+<form (ngSubmit)="saveProfile()" #frm="ngForm">
+  <div class="field">
+    <label>Usuario</label>
+    <input pInputText type="text" [(ngModel)]="username" name="username" required />
+  </div>
+
+  <div class="field">
+    <label>Nombre(s)</label>
+    <input pInputText type="text" [(ngModel)]="username" name="firstName" required />
+  </div>
+
+  <div class="field">
+    <label>Apellidos</label>
+    <input pInputText type="text" [(ngModel)]="username" name="lastName" required />
+  </div>
+
+  <div class="field">
+    <label>Email</label>
+    <input pInputText type="email" [(ngModel)]="email" name="email" required />
+  </div>
+
+  <p-button label="Guardar" styleClass="pj-btn"></p-button>
+</form>

@@ -1,0 +1,31 @@
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  text-decoration: none;
+  padding: .55rem 1rem;
+  font-size: .95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  background: #e5e7eb;   /* 👈 gris/plomo base */
+  color: var(--pj-azul); /* texto azul */
+  transition: background .2s, transform .1s;
+
+  &:hover {
+    background: #d1d5db; /* un gris un poco más oscuro */
+  }
+
+  &:active {
+    transform: scale(.97);
+  }
+}
+
+.btn.active {
+  background: var(--pj-rojo); /* 👈 rojo institucional activo */
+  color: #fff;               /* texto blanco */
+}

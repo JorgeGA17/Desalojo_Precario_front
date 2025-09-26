@@ -1,0 +1,89 @@
+:host {
+  display: block;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  max-width: 500px;
+  margin: 2rem auto; /* 👈 centrado */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+:host ::ng-deep .pj-btn.p-button {
+  background: var(--pj-rojo);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    background: var(--pj-rojo-osc);
+  }
+
+  &:active {
+    transform: scale(.97);
+  }
+}
+
+
+
+h3 {
+  color: var(--pj-rojo);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--pj-rojo);
+  padding-bottom: .4rem;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+
+  label {
+    font-weight: 600;
+    color: var(--pj-azul);
+    font-size: .9rem;
+  }
+
+  input {
+    padding: .55rem .75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: .95rem;
+    transition: border-color .2s, box-shadow .2s;
+
+    &:focus {
+      border-color: var(--pj-rojo);
+      box-shadow: 0 0 0 2px rgba(151, 8, 11, .2);
+      outline: none;
+    }
+  }
+}
+
+button.btn {
+  padding: .55rem 1rem;
+  font-size: .95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background .2s, transform .1s;
+
+  &.primary {
+    background: var(--pj-rojo);
+    color: #fff;
+
+    &:hover {
+      background: var(--pj-rojo-osc);
+    }
+
+    &:active {
+      transform: scale(.97);
+    }
+  }
+}
