@@ -7,13 +7,11 @@ export const loginGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (authService.isLoggedIn()) {
-    // Si ya hay sesión, cerramos sesión
+    // cierra sesión
     authService.logout();
-
-    // 🚀 Aquí decides dónde mandarlo:
-    router.navigate(['/home']); // lo mandamos a home
-    return false; // bloqueamos acceso al login
+    router.navigate(['/home']); 
+    return false;
   }
 
-  return true; // si no hay sesión, puede entrar al login
+  return true; 
 };
