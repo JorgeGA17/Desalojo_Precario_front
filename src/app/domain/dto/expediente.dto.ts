@@ -1,15 +1,22 @@
+// ==============================================
+// 🧠 DOMAIN (contratos puros - sin lógica)
+// ==============================================
+
+// ─────────── Estados normalizados ───────────
 export type EstadoDoc = 'GENERADO' | 'EN_PROCESO' | 'ERROR';
 
+// ───────────── BANDEJA (orden exacto) ─────────────
 export interface BandejaItem {
-  usuario: string;         
-  fechaRegistro: string;   
-  corte: string;         
-  sede: string;           
-  instancia: string;      
-  numeroExpediente: string; 
-  juez?: string;           
-  especialista?: string;   
-  estado?: EstadoDoc;     
+  usuario: string;         // 1) USUARIO
+  fechaRegistro: string;   // 2) FECHA REGISTRO (ISO)
+  corte: string;          // 3) CORTE
+  sede: string;           // 4) SEDE
+  instancia: string;      // 5) INSTANCIA
+  numeroExpediente: string; // 6) NÚMERO EXPEDIENTE
+  juez?: string;           // 7) JUEZ
+  especialista?: string;   // 8) ESPECIALISTA
+  estado?: EstadoDoc;      // 9) ESTADO
+  // 10) ACCIONES (opcionales)
   url?: string;
   id?: string;
 }

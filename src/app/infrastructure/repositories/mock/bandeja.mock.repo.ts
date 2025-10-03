@@ -6,6 +6,7 @@ import { Observable, of, delay, map } from 'rxjs';
 @Injectable()
 export class BandejaMockRepo implements IBandejaRepository {
   listar(q: BandejaQuery): Observable<BandejaResponse> {
+    // ⚠️ MOCK MOVIDO DESDE EL USE CASE  // NUEVO
     const mockItems: BandejaItem[] = [
       {
         usuario: 'rmelgarejot',
@@ -253,11 +254,13 @@ export class BandejaMockRepo implements IBandejaRepository {
         estado: 'ERROR',
         id: '19'
       },
+      // ... (tus otros ítems mock idénticos a los que ya tienes)
     ];
 
     return of(mockItems).pipe(
       delay(400),
       map(items => {
+        // 🔎 Filtro: amplío a corte/sede/expediente para ser coherentes con la UI  // CAMBIO
         const term = (q.search ?? '').toLowerCase().trim();
         if (term) {
           items = items.filter(i =>

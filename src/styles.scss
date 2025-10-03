@@ -3,6 +3,9 @@
 @import "primeng/resources/primeng.min.css";
 @import "primeicons/primeicons.css";
 
+/* ===============================
+   Fuente institucional (Poppins)
+   =============================== */
 @font-face {
   font-family: 'Poppins';
   src: url('/assets/fonts/Poppins-Bold.ttf') format('truetype');
@@ -29,14 +32,16 @@
   font-display: swap;
 }
 
+/* Aplica la fuente global */
 body {
   font-family: system-ui, "Segoe UI", Arial, sans-serif;
-
+  /* puedes mantener aquí tus resets/colores globales */
 
   background-image: url('assets/img/imagen.png');
   background-repeat: repeat;
   
-  background-size: auto; 
+  background-size: auto; /* o cover/contain según lo que quieras */
+  //overflow: hidden; /* 👈 elimina la barra global */
   
 }
 
